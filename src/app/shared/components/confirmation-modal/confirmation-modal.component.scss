@@ -1,0 +1,49 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 440px;
+  overflow: hidden;
+
+  &__header {
+    padding: 20px 24px 0;
+  }
+
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1b2a3b;
+    margin: 0;
+  }
+
+  &__body {
+    padding: 12px 24px 20px;
+  }
+
+  &__message {
+    font-size: 0.9rem;
+    color: #5a6a7e;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  &__footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e8eef5;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+}

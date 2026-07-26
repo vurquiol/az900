@@ -1,0 +1,99 @@
+<div class="cert-detail" *ngIf="!isLoading && !error && certification">
+
+  <!-- Top bar -->
+  <div class="cert-detail__topbar">
+    <div class="container">
+      <button class="btn-back" (click)="goBack()">← Volver al inicio</button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="cert-detail__hero">
+    <div class="container">
+      <span class="cert-detail__level">{{ certification.level }}</span>
+      <h1 class="cert-detail__code">{{ certification.code }}</h1>
+      <h2 class="cert-detail__name">{{ certification.name }}</h2>
+      <p class="cert-detail__description">{{ certification.description }}</p>
+      <div class="cert-detail__meta">
+        <span>{{ questions.length }} preguntas disponibles</span>
+        <span>{{ categories.length }} categorías</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container cert-detail__content">
+
+    <!-- Progress stats -->
+    <div class="cert-detail__progress-card" *ngIf="progress">
+      <h3>Tu progreso</h3>
+      <div class="cert-detail__progress-stats">
+        <div class="stat">
+          <span class="stat__value">{{ progress.completedAttempts }}</span>
+          <span class="stat__label">Intentos completados</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">{{ progress.bestScore }}%</span>
+          <span class="stat__label">Mejor puntaje</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pending attempt alert -->
+    <div class="cert-detail__pending" *ngIf="pendingAttempt">
+      <div class="cert-detail__pending-info">
+        <span class="cert-detail__pending-icon">⏸</span>
+        <div>
+          <strong>Tienes un intento pendiente</strong>
+          <p>Iniciado el {{ pendingAttempt.startedAt | date:'dd/MM/yyyy HH:mm' }}</p>
+        </div>
+      </div>
+      <button class="btn btn--primary" (click)="resumeAttempt()">Continuar intento</button>
+    </div>
+
+    <!-- Practice options -->
+    <div class="cert-detail__section">
+      <h3 class="cert-detail__section-title">Opciones de práctica</h3>
+      <div class="cert-detail__options">
+        <div class="practice-option" (click)="startFullExam()">
+          <div class="practice-option__icon">📝</div>
+          <div class="practice-option__content">
+            <h4>Examen completo</h4>
+            <p>Practica con preguntas de todas las categorías de forma aleatoria.</p>
+          </div>
+          <button class="btn btn--primary">Comenzar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="cert-detail__section">
+      <h3 class="cert-detail__section-title">Practicar por categoría</h3>
+      <div class="cert-detail__categories">
+        <div
+          *ngFor="let cat of categories; trackBy: trackByCategory"
+          class="cat-option"
+          (click)="startCategoryExam(cat.id)">
+          <app-category-card
+            [category]="cat"
+            [questionCount]="getQuestionCount(cat.id)">
+          </app-category-card>
+          <button class="btn btn--outline btn--sm">Practicar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Loading state -->
+<div class="loading-container" *ngIf="isLoading">
+  <div class="spinner"></div>
+  <p>Cargando...</p>
+</div>
+
+<!-- Error state -->
+<div class="container" *ngIf="!isLoading && error">
+  <app-empty-state icon="⚠️" title="Error" [message]="error">
+    <button class="btn btn--primary" (click)="goBack()">Volver al inicio</button>
+  </app-empty-state>
+</div>

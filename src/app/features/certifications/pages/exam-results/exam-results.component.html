@@ -1,0 +1,57 @@
+<div class="results" *ngIf="!isLoading && !error && attempt && attempt.result">
+
+  <!-- Top bar -->
+  <div class="results__topbar">
+    <div class="container">
+      <span class="results__cert-code">{{ certification?.code }}</span>
+      <h1 class="results__title">Resultados del examen</h1>
+    </div>
+  </div>
+
+  <div class="container results__content">
+
+    <!-- Score card -->
+    <app-result-score-card [result]="attempt.result"></app-result-score-card>
+
+    <!-- Category breakdown -->
+    <div class="results__section">
+      <app-category-result-chart [categoryResults]="attempt.result.categoryResults">
+      </app-category-result-chart>
+    </div>
+
+    <!-- Actions -->
+    <div class="results__actions">
+      <button class="btn btn--outline" (click)="reviewAnswers()">
+        📋 Revisar respuestas
+      </button>
+      <button class="btn btn--primary" (click)="retry()">
+        🔄 Reintentar
+      </button>
+      <button class="btn btn--outline" (click)="goToCertification()">
+        ← Volver a {{ certification?.code }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Loading -->
+<div class="loading-container" *ngIf="isLoading">
+  <div class="spinner"></div>
+  <p>Cargando resultados...</p>
+</div>
+
+<!-- Error -->
+<div class="container" *ngIf="!isLoading && error">
+  <app-empty-state icon="⚠️" title="Error" [message]="error">
+  </app-empty-state>
+</div>
+
+<!-- No results -->
+<div class="container" *ngIf="!isLoading && !error && (!attempt || !attempt.result)">
+  <app-empty-state
+    icon="📭"
+    title="No se encontraron resultados"
+    message="El intento no fue encontrado o aún no ha sido completado.">
+    <button class="btn btn--primary" (click)="goToCertification()">Volver</button>
+  </app-empty-state>
+</div>

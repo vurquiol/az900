@@ -1,0 +1,19 @@
+<div class="exam-summary" *ngIf="attempt">
+  <div class="exam-summary__stats">
+    <div class="exam-summary__stat">
+      <span class="exam-summary__stat-value">{{ questions.length }}</span>
+      <span class="exam-summary__stat-label">Total</span>
+    </div>
+    <div class="exam-summary__stat exam-summary__stat--answered">
+      <span class="exam-summary__stat-value">{{ answeredCount }}</span>
+      <span class="exam-summary__stat-label">Respondidas</span>
+    </div>
+    <div class="exam-summary__stat exam-summary__stat--pending">
+      <span class="exam-summary__stat-value">{{ unansweredCount }}</span>
+      <span class="exam-summary__stat-label">Sin responder</span>
+    </div>
+  </div>
+  <p class="exam-summary__warning" *ngIf="unansweredCount > 0">
+    ⚠️ Tienes {{ unansweredCount }} pregunta(s) sin responder. Puedes finalizar o continuar respondiendo.
+  </p>
+</div>

@@ -1,0 +1,30 @@
+<div class="cert-card" [class.cert-card--disabled]="!certification.enabled">
+  <div class="cert-card__header">
+    <span class="cert-card__level">{{ certification.level }}</span>
+    <span class="cert-card__status" [class.cert-card__status--available]="certification.enabled">
+      {{ certification.enabled ? 'Disponible' : 'Próximamente' }}
+    </span>
+  </div>
+  <div class="cert-card__body">
+    <h2 class="cert-card__code">{{ certification.code }}</h2>
+    <h3 class="cert-card__name">{{ certification.name }}</h3>
+    <p class="cert-card__description">{{ certification.description }}</p>
+    <p class="cert-card__count" *ngIf="certification.enabled && questionCount > 0">
+      {{ questionCount }} preguntas disponibles
+    </p>
+  </div>
+  <div class="cert-card__footer">
+    <a
+      *ngIf="certification.enabled"
+      [routerLink]="['/certifications', certification.id]"
+      class="btn btn--primary btn--full">
+      Comenzar a practicar
+    </a>
+    <button
+      *ngIf="!certification.enabled"
+      class="btn btn--disabled btn--full"
+      disabled>
+      Próximamente
+    </button>
+  </div>
+</div>

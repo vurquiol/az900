@@ -1,0 +1,21 @@
+<div class="score-card" *ngIf="result" [ngClass]="scoreClass">
+  <div class="score-card__circle">
+    <span class="score-card__pct">{{ result.scorePercentage }}%</span>
+    <span class="score-card__label">{{ result.passed ? 'Aprobado' : 'Reprobado' }}</span>
+  </div>
+  <div class="score-card__stats">
+    <div class="score-card__stat score-card__stat--correct">
+      <span class="score-card__stat-value">{{ result.correctAnswers }}</span>
+      <span class="score-card__stat-label">Correctas</span>
+    </div>
+    <div class="score-card__stat score-card__stat--incorrect">
+      <span class="score-card__stat-value">{{ result.incorrectAnswers }}</span>
+      <span class="score-card__stat-label">Incorrectas</span>
+    </div>
+    <div class="score-card__stat score-card__stat--unanswered">
+      <span class="score-card__stat-value">{{ result.unanswered }}</span>
+      <span class="score-card__stat-label">Sin responder</span>
+    </div>
+  </div>
+  <p class="score-card__message">{{ motivationalMessage }}</p>
+</div>

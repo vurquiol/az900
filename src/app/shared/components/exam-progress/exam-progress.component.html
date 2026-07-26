@@ -1,0 +1,12 @@
+<div class="exam-progress">
+  <div class="exam-progress__info">
+    <span class="exam-progress__label">Pregunta <strong>{{ current }}</strong> de <strong>{{ total }}</strong></span>
+    <span class="exam-progress__answered">{{ answeredCount }} respondidas</span>
+  </div>
+  <div class="exam-progress__bar-container" role="progressbar"
+       [attr.aria-valuenow]="percentage"
+       aria-valuemin="0"
+       aria-valuemax="100">
+    <div class="exam-progress__bar" [style.width.%]="percentage"></div>
+  </div>
+</div>

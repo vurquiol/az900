@@ -1,0 +1,53 @@
+<div class="home">
+  <!-- Header -->
+  <header class="home__header">
+    <div class="container">
+      <div class="home__brand">
+        <span class="home__brand-icon">☁</span>
+        <div>
+          <h1 class="home__title">Azure Cert Practice</h1>
+          <p class="home__subtitle">Plataforma de práctica para certificaciones Microsoft Azure</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="home__main container">
+
+    <!-- Loading state -->
+    <div class="home__loading" *ngIf="isLoading">
+      <div class="spinner"></div>
+      <p>Cargando certificaciones...</p>
+    </div>
+
+    <!-- Error state -->
+    <app-empty-state
+      *ngIf="!isLoading && error"
+      icon="⚠️"
+      title="Error al cargar"
+      [message]="error">
+    </app-empty-state>
+
+    <!-- Certifications grid -->
+    <div *ngIf="!isLoading && !error">
+      <p class="home__intro">
+        Selecciona una certificación para comenzar a practicar con preguntas originales basadas en los objetivos oficiales de Microsoft Azure.
+      </p>
+      <div class="home__grid">
+        <app-certification-card
+          *ngFor="let item of certifications; trackBy: trackByCertId"
+          [certification]="item.certification"
+          [questionCount]="item.questionCount">
+        </app-certification-card>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="home__footer">
+    <div class="container">
+      <p>Plataforma de estudio independiente. No afiliada a Microsoft.</p>
+    </div>
+  </footer>
+</div>

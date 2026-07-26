@@ -1,0 +1,91 @@
+.score-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+
+  &.score--pass {
+    border-color: #107c10;
+    background: linear-gradient(135deg, #f0faf0 0%, #fff 100%);
+  }
+
+  &.score--fail {
+    border-color: #d13438;
+    background: linear-gradient(135deg, #fef0f0 0%, #fff 100%);
+  }
+
+  &__circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid currentColor;
+
+    .score--pass & {
+      color: #107c10;
+      background: #dff6dd;
+    }
+
+    .score--fail & {
+      color: #d13438;
+      background: #fde7e9;
+    }
+  }
+
+  &__pct {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    .score-card__stat--correct & { color: #107c10; }
+    .score-card__stat--incorrect & { color: #d13438; }
+    .score-card__stat--unanswered & { color: #888; }
+  }
+
+  &__stat-label {
+    font-size: 0.75rem;
+    color: #5a6a7e;
+    font-weight: 500;
+  }
+
+  &__message {
+    font-size: 0.9rem;
+    color: #5a6a7e;
+    margin: 0;
+    font-style: italic;
+    line-height: 1.5;
+  }
+}

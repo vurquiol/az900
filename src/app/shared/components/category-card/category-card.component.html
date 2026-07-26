@@ -1,0 +1,27 @@
+<div
+  class="cat-card"
+  [class.cat-card--selectable]="selectable"
+  [class.cat-card--selected]="selected"
+  (click)="toggle()"
+  [attr.role]="selectable ? 'checkbox' : null"
+  [attr.aria-checked]="selectable ? selected : null"
+  [attr.tabindex]="selectable ? 0 : null"
+  (keyup.enter)="toggle()"
+  (keyup.space)="toggle()">
+
+  <div class="cat-card__check" *ngIf="selectable">
+    <span class="cat-card__check-icon">{{ selected ? '✓' : '' }}</span>
+  </div>
+
+  <div class="cat-card__icon">
+    <span>{{ category.icon }}</span>
+  </div>
+
+  <div class="cat-card__content">
+    <h4 class="cat-card__name">{{ category.name }}</h4>
+    <p class="cat-card__description">{{ category.description }}</p>
+    <span class="cat-card__count" *ngIf="questionCount > 0">
+      {{ questionCount }} preguntas
+    </span>
+  </div>
+</div>

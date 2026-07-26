@@ -1,0 +1,89 @@
+<!-- Loading -->
+<div class="loading-container" *ngIf="isLoading">
+  <div class="spinner"></div>
+  <p>Cargando revisión...</p>
+</div>
+
+<!-- Error -->
+<div class="container" *ngIf="!isLoading && error">
+  <app-empty-state icon="⚠️" title="Error" [message]="error"></app-empty-state>
+</div>
+
+<!-- Review content -->
+<div class="review" *ngIf="!isLoading && !error && currentQuestion">
+
+  <!-- Top bar -->
+  <div class="review__topbar">
+    <div class="review__topbar-inner">
+      <button class="btn-back" (click)="goToResults()">← Resultados</button>
+      <span class="review__cert-code">{{ certification?.code }}</span>
+      <span class="review__counter">{{ currentIndex + 1 }} / {{ questions.length }}</span>
+    </div>
+  </div>
+
+  <div class="container review__content">
+
+    <!-- Answer status -->
+    <div class="review__status" [class.review__status--correct]="isCurrentAnswerCorrect()"
+         [class.review__status--incorrect]="!isCurrentAnswerCorrect()">
+      <span *ngIf="isCurrentAnswerCorrect()">✓ Respuesta correcta</span>
+      <span *ngIf="!isCurrentAnswerCorrect()">✗ Respuesta incorrecta</span>
+    </div>
+
+    <!-- Question card -->
+    <div class="review__question-card">
+
+      <!-- Category -->
+      <div class="review__category" *ngIf="currentCategory">
+        <span>{{ currentCategory.icon }}</span>
+        <span>{{ currentCategory.name }}</span>
+      </div>
+
+      <!-- Type indicator -->
+      <div class="review__type-badge" *ngIf="currentQuestion.type === 'multiple'">
+        Selecciona {{ currentQuestion.correctOptionIds.length }} respuestas correctas
+      </div>
+
+      <!-- Question text -->
+      <p class="review__question-text">{{ currentQuestion.question }}</p>
+
+      <!-- Options -->
+      <div class="review__options">
+        <app-question-option
+          *ngFor="let option of currentQuestion.options; let i = index; trackBy: trackByOption"
+          [option]="option"
+          [index]="i"
+          [type]="currentQuestion.type"
+          [selected]="isSelectedOption(option.id)"
+          [disabled]="true"
+          [showResult]="true"
+          [isCorrect]="isCorrectOption(option.id)">
+        </app-question-option>
+      </div>
+
+      <!-- Legend -->
+      <div class="review__legend">
+        <span class="review__legend-item review__legend-item--correct">✓ Respuesta correcta</span>
+        <span class="review__legend-item review__legend-item--incorrect">✗ Tu respuesta incorrecta</span>
+        <span class="review__legend-item review__legend-item--missed">◻ Respuesta omitida</span>
+      </div>
+
+      <!-- Explanation -->
+      <div class="review__explanation">
+        <h4 class="review__explanation-title">💡 Explicación</h4>
+        <p class="review__explanation-text">{{ currentQuestion.explanation }}</p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="review__nav">
+      <button class="btn btn--outline" [disabled]="currentIndex === 0" (click)="previousQuestion()">
+        ← Anterior
+      </button>
+      <button class="btn btn--primary" [disabled]="currentIndex === questions.length - 1" (click)="nextQuestion()">
+        Siguiente →
+      </button>
+    </div>
+
+  </div>
+</div>

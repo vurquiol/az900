@@ -1,0 +1,53 @@
+.cat-chart {
+  &__title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1b2a3b;
+    margin: 0 0 16px;
+  }
+
+  &__row {
+    margin-bottom: 14px;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  &__name {
+    font-size: 0.85rem;
+    color: #1b2a3b;
+    font-weight: 500;
+  }
+
+  &__score {
+    font-size: 0.8rem;
+    color: #5a6a7e;
+    font-weight: 600;
+  }
+
+  &__bar-bg {
+    height: 10px;
+    background: #e8eef5;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  &__bar {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+    min-width: 4px;
+  }
+
+  &__empty {
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0;
+  }
+}

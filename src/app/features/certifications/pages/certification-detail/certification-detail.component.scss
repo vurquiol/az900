@@ -1,0 +1,222 @@
+.cert-detail {
+  min-height: 100vh;
+  background: #f5f9fd;
+
+  &__topbar {
+    background: #fff;
+    border-bottom: 1px solid #e8eef5;
+    padding: 12px 0;
+  }
+
+  &__hero {
+    background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+    color: #fff;
+    padding: 40px 0;
+  }
+
+  &__level {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  &__code {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: #fff;
+  }
+
+  &__name {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0 0 12px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  &__description {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 16px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  &__meta {
+    display: flex;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      &::before {
+        content: '•';
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      &:first-child::before { display: none; }
+    }
+  }
+
+  &__content {
+    padding-top: 32px;
+    padding-bottom: 48px;
+  }
+
+  &__progress-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e8eef5;
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1b2a3b;
+      margin: 0 0 16px;
+    }
+  }
+
+  &__progress-stats {
+    display: flex;
+    gap: 32px;
+  }
+
+  &__pending {
+    background: #fff8e0;
+    border: 1px solid #ffb900;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__pending-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    strong { font-size: 0.9rem; color: #1b2a3b; }
+    p { font-size: 0.8rem; color: #5a6a7e; margin: 2px 0 0; }
+  }
+
+  &__pending-icon { font-size: 1.5rem; }
+
+  &__section {
+    margin-bottom: 32px;
+  }
+
+  &__section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1b2a3b;
+    margin: 0 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e8eef5;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.practice-option {
+  background: #fff;
+  border: 1px solid #e8eef5;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s;
+
+  &:hover {
+    border-color: #0078d4;
+    box-shadow: 0 4px 16px rgba(0, 120, 212, 0.1);
+  }
+
+  &__icon {
+    font-size: 2rem;
+    width: 52px;
+    height: 52px;
+    background: #f0f6fe;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    flex: 1;
+
+    h4 { font-size: 1rem; font-weight: 600; color: #1b2a3b; margin: 0 0 4px; }
+    p  { font-size: 0.85rem; color: #5a6a7e; margin: 0; }
+  }
+}
+
+.cat-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+
+  app-category-card { flex: 1; }
+
+  .btn { flex-shrink: 0; }
+
+  &:hover { opacity: 0.9; }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  &__value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0078d4;
+  }
+
+  &__label {
+    font-size: 0.75rem;
+    color: #5a6a7e;
+    font-weight: 500;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+  color: #5a6a7e;
+}

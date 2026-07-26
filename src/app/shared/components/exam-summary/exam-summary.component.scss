@@ -1,0 +1,39 @@
+.exam-summary {
+  &__stats {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 12px;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+
+    &--answered &-value { color: #107c10; }
+    &--pending &-value { color: #ffb900; }
+  }
+
+  &__stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0078d4;
+  }
+
+  &__stat-label {
+    font-size: 0.75rem;
+    color: #5a6a7e;
+    font-weight: 500;
+  }
+
+  &__warning {
+    font-size: 0.875rem;
+    color: #7a5c00;
+    background: #fff8e0;
+    border: 1px solid #ffb900;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 0;
+  }
+}

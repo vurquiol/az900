@@ -1,0 +1,21 @@
+<div class="q-nav">
+  <p class="q-nav__title">Navegación</p>
+  <div class="q-nav__grid">
+    <button
+      *ngFor="let id of questionIds; let i = index; trackBy: trackById"
+      class="q-nav__btn"
+      [class.q-nav__btn--current]="i === currentIndex"
+      [class.q-nav__btn--answered]="isAnswered(id) && i !== currentIndex"
+      [class.q-nav__btn--unanswered]="!isAnswered(id) && i !== currentIndex"
+      (click)="goTo(i)"
+      [attr.aria-label]="'Ir a pregunta ' + (i + 1)"
+      [attr.aria-current]="i === currentIndex ? 'true' : null">
+      {{ i + 1 }}
+    </button>
+  </div>
+  <div class="q-nav__legend">
+    <span class="q-nav__legend-item q-nav__legend-item--current">Actual</span>
+    <span class="q-nav__legend-item q-nav__legend-item--answered">Respondida</span>
+    <span class="q-nav__legend-item q-nav__legend-item--unanswered">Pendiente</span>
+  </div>
+</div>

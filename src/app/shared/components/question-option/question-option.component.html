@@ -1,0 +1,23 @@
+<div
+  class="q-option"
+  [class.q-option--selected]="selected"
+  [class.q-option--disabled]="disabled"
+  [class.q-option--correct]="showResult && isCorrect"
+  [class.q-option--incorrect]="showResult && selected && !isCorrect"
+  [class.q-option--missed]="showResult && !selected && isCorrect"
+  (click)="onSelect()"
+  [attr.role]="type === 'single' ? 'radio' : 'checkbox'"
+  [attr.aria-checked]="selected"
+  tabindex="0"
+  (keyup.enter)="onSelect()"
+  (keyup.space)="onSelect()">
+
+  <div class="q-option__indicator">
+    <span class="q-option__label">{{ label }}</span>
+    <span class="q-option__check" *ngIf="selected && !showResult">✓</span>
+    <span class="q-option__icon" *ngIf="showResult && isCorrect">✓</span>
+    <span class="q-option__icon q-option__icon--wrong" *ngIf="showResult && selected && !isCorrect">✗</span>
+  </div>
+
+  <span class="q-option__text">{{ option.text }}</span>
+</div>

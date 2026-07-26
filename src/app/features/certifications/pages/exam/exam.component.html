@@ -1,0 +1,130 @@
+<!-- Loading state -->
+<div class="exam-loading" *ngIf="isLoading">
+  <div class="spinner"></div>
+  <p>Cargando examen...</p>
+</div>
+
+<!-- Error state -->
+<div class="container" *ngIf="!isLoading && error">
+  <app-empty-state icon="⚠️" title="Error al cargar" [message]="error">
+    <button class="btn btn--primary" (click)="goBack()">Volver</button>
+  </app-empty-state>
+</div>
+
+<!-- Exam content -->
+<div class="exam" *ngIf="!isLoading && !error && state && state.attempt && currentQuestion">
+
+  <!-- Top bar -->
+  <div class="exam__topbar">
+    <div class="exam__topbar-inner">
+      <span class="exam__cert-code">{{ certification?.code }}</span>
+      <app-exam-progress
+        [current]="state.currentIndex + 1"
+        [total]="state.questions.length"
+        [answeredCount]="answeredCount"
+        class="exam__progress">
+      </app-exam-progress>
+      <button class="btn-icon" (click)="toggleSidebar()" title="Navegación de preguntas">
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <!-- Main layout -->
+  <div class="exam__layout">
+
+    <!-- Question area -->
+    <main class="exam__main">
+      <div class="exam__question-card">
+
+        <!-- Category badge -->
+        <div class="exam__category" *ngIf="currentCategory">
+          <span>{{ currentCategory.icon }}</span>
+          <span>{{ currentCategory.name }}</span>
+        </div>
+
+        <!-- Question type indicator -->
+        <div class="exam__type-badge" *ngIf="currentQuestion.type === 'multiple'">
+          Selecciona {{ currentQuestion.correctOptionIds.length }} respuestas correctas
+        </div>
+
+        <!-- Question text -->
+        <p class="exam__question-text">{{ currentQuestion.question }}</p>
+
+        <!-- Options -->
+        <div class="exam__options" [attr.role]="currentQuestion.type === 'single' ? 'radiogroup' : 'group'">
+          <app-question-option
+            *ngFor="let option of currentQuestion.options; let i = index; trackBy: trackByOption"
+            [option]="option"
+            [index]="i"
+            [type]="currentQuestion.type"
+            [selected]="isOptionSelected(option.id)"
+            [disabled]="false"
+            [showResult]="false"
+            (toggle)="onOptionToggle($event)">
+          </app-question-option>
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="exam__nav">
+        <button
+          class="btn btn--outline"
+          [disabled]="state.currentIndex === 0"
+          (click)="previousQuestion()">
+          ← Anterior
+        </button>
+
+        <button
+          *ngIf="state.currentIndex < state.questions.length - 1"
+          class="btn btn--primary"
+          (click)="nextQuestion()">
+          Siguiente →
+        </button>
+
+        <button
+          *ngIf="state.currentIndex === state.questions.length - 1"
+          class="btn btn--success"
+          (click)="requestFinish()">
+          Finalizar prueba
+        </button>
+      </div>
+
+      <!-- Finish button always accessible -->
+      <div class="exam__finish-row" *ngIf="state.currentIndex < state.questions.length - 1">
+        <button class="btn btn--outline btn--danger" (click)="requestFinish()">
+          Finalizar prueba
+        </button>
+      </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="exam__sidebar" [class.exam__sidebar--open]="showSidebar">
+      <app-question-navigation
+        [questionIds]="state.attempt.questionIds"
+        [answers]="state.attempt.answers"
+        [currentIndex]="state.currentIndex"
+        (navigate)="goToQuestion($event)">
+      </app-question-navigation>
+
+      <div class="exam__sidebar-summary">
+        <app-exam-summary
+          [attempt]="state.attempt"
+          [questions]="state.questions"
+          [categories]="state.categories">
+        </app-exam-summary>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Confirmation modal -->
+  <app-confirmation-modal
+    [visible]="showConfirmFinish"
+    title="¿Finalizar prueba?"
+    message="¿Estás seguro de que deseas finalizar? No podrás modificar tus respuestas después."
+    confirmLabel="Finalizar"
+    cancelLabel="Continuar respondiendo"
+    (confirmed)="confirmFinish()"
+    (cancelled)="cancelFinish()">
+  </app-confirmation-modal>
+</div>

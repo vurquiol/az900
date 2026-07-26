@@ -1,0 +1,23 @@
+<div class="cat-chart">
+  <h4 class="cat-chart__title">Resultados por categoría</h4>
+  <div class="cat-chart__list" *ngIf="categoryResults.length > 0; else noData">
+    <div
+      *ngFor="let cat of categoryResults; trackBy: trackByCategory"
+      class="cat-chart__row">
+      <div class="cat-chart__header">
+        <span class="cat-chart__name">{{ cat.categoryName }}</span>
+        <span class="cat-chart__score">{{ cat.correct }}/{{ cat.total }} ({{ cat.percentage }}%)</span>
+      </div>
+      <div class="cat-chart__bar-bg">
+        <div
+          class="cat-chart__bar"
+          [style.width.%]="cat.percentage"
+          [style.background-color]="getBarColor(cat.percentage)">
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noData>
+    <p class="cat-chart__empty">No hay datos de categorías disponibles.</p>
+  </ng-template>
+</div>
