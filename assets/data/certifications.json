@@ -1,0 +1,74 @@
+[
+  {
+    "id": "az-900",
+    "code": "AZ-900",
+    "name": "Microsoft Azure Fundamentals",
+    "description": "Fundamentos de Microsoft Azure: servicios cloud, arquitectura, administración y gobernanza.",
+    "level": "Fundamentals",
+    "enabled": true,
+    "categoryFile": "assets/data/az-900/categories.json",
+    "questionFile": "assets/data/az-900/questions.json",
+    "studyUrl": "https://learn.microsoft.com/es-es/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification",
+    "studyFile": "assets/data/az-900/study.json"
+  },
+  {
+    "id": "az-104",
+    "code": "AZ-104",
+    "name": "Microsoft Azure Administrator",
+    "description": "Administración de identidades, gobernanza, almacenamiento, cómputo y redes en Azure.",
+    "level": "Associate",
+    "enabled": false,
+    "categoryFile": "assets/data/az-104/categories.json",
+    "questionFile": "assets/data/az-104/questions.json"
+  },
+  {
+    "id": "az-204",
+    "code": "AZ-204",
+    "name": "Developing Solutions for Microsoft Azure",
+    "description": "Desarrollo e implementación de soluciones en la nube con Azure.",
+    "level": "Associate",
+    "enabled": false,
+    "categoryFile": "assets/data/az-204/categories.json",
+    "questionFile": "assets/data/az-204/questions.json"
+  },
+  {
+    "id": "az-305",
+    "code": "AZ-305",
+    "name": "Azure Solutions Architect Expert",
+    "description": "Diseño de soluciones de infraestructura de Azure.",
+    "level": "Expert",
+    "enabled": false,
+    "categoryFile": "assets/data/az-305/categories.json",
+    "questionFile": "assets/data/az-305/questions.json"
+  },
+  {
+    "id": "ai-900",
+    "code": "AI-900",
+    "name": "Microsoft Azure AI Fundamentals",
+    "description": "Fundamentos de inteligencia artificial y aprendizaje automático en Azure.",
+    "level": "Fundamentals",
+    "enabled": false,
+    "categoryFile": "assets/data/ai-900/categories.json",
+    "questionFile": "assets/data/ai-900/questions.json"
+  },
+  {
+    "id": "dp-900",
+    "code": "DP-900",
+    "name": "Microsoft Azure Data Fundamentals",
+    "description": "Fundamentos de datos, almacenamiento y análisis en Azure.",
+    "level": "Fundamentals",
+    "enabled": false,
+    "categoryFile": "assets/data/dp-900/categories.json",
+    "questionFile": "assets/data/dp-900/questions.json"
+  },
+  {
+    "id": "sc-900",
+    "code": "SC-900",
+    "name": "Microsoft Security, Compliance, and Identity Fundamentals",
+    "description": "Fundamentos de seguridad, cumplimiento e identidad en Microsoft Azure.",
+    "level": "Fundamentals",
+    "enabled": false,
+    "categoryFile": "assets/data/sc-900/categories.json",
+    "questionFile": "assets/data/sc-900/questions.json"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "cloud-concepts",
+    "name": "Conceptos de nube",
+    "description": "Beneficios, modelos de nube y modelos de servicio: IaaS, PaaS, SaaS.",
+    "icon": "☁",
+    "order": 1
+  },
+  {
+    "id": "azure-architecture",
+    "name": "Arquitectura y servicios de Azure",
+    "description": "Regiones, zonas de disponibilidad, cómputo, redes, almacenamiento y bases de datos.",
+    "icon": "🏗",
+    "order": 2
+  },
+  {
+    "id": "azure-governance",
+    "name": "Administración y gobernanza de Azure",
+    "description": "Microsoft Entra ID, RBAC, Azure Policy, costos, SLA y herramientas de administración.",
+    "icon": "🛡",
+    "order": 3
+  }
+]
