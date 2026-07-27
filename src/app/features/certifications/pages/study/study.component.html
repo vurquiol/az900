@@ -1,0 +1,74 @@
+<div class="study-page" *ngIf="!isLoading && !error && certification">
+
+  <!-- Top bar -->
+  <div class="study-page__topbar">
+    <div class="container">
+      <button class="btn-back" (click)="goBack()">← Volver a {{ certification.code }}</button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="study-page__hero">
+    <div class="container">
+      <span class="study-page__badge">Material de estudio</span>
+      <h1 class="study-page__title">{{ certification.code }} · {{ certification.name }}</h1>
+      <p class="study-page__subtitle">Repasa los temas clave organizados por categoría antes de practicar con el examen.</p>
+    </div>
+  </div>
+
+  <div class="container study-page__content">
+
+    <!-- Category sidebar -->
+    <aside class="study-page__sidebar">
+      <button
+        *ngFor="let section of sections; trackBy: trackByCategoryId"
+        class="sidebar-item"
+        [class.sidebar-item--active]="section.categoryId === activeCategoryId"
+        (click)="selectCategory(section.categoryId)">
+        <span class="sidebar-item__icon">{{ section.icon }}</span>
+        <span class="sidebar-item__label">
+          <strong>{{ section.categoryName }}</strong>
+          <small>{{ section.topics.length }} temas</small>
+        </span>
+      </button>
+    </aside>
+
+    <!-- Topics -->
+    <div class="study-page__topics" *ngIf="activeSection">
+      <h2 class="study-page__section-title">
+        <span>{{ activeSection.icon }}</span> {{ activeSection.categoryName }}
+      </h2>
+
+      <div
+        *ngFor="let topic of activeSection.topics; trackBy: trackByTopicId"
+        class="topic-card"
+        [class.topic-card--expanded]="expandedTopicId === topic.id">
+        <button class="topic-card__header" (click)="toggleTopic(topic.id)">
+          <h3>{{ topic.title }}</h3>
+          <span class="topic-card__chevron">{{ expandedTopicId === topic.id ? '−' : '+' }}</span>
+        </button>
+
+        <div class="topic-card__body" *ngIf="expandedTopicId === topic.id">
+          <p class="topic-card__text">{{ topic.content }}</p>
+          <ul class="topic-card__keypoints" *ngIf="topic.keyPoints && topic.keyPoints.length">
+            <li *ngFor="let point of topic.keyPoints">{{ point }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Loading state -->
+<div class="loading-container" *ngIf="isLoading">
+  <div class="spinner"></div>
+  <p>Cargando material de estudio...</p>
+</div>
+
+<!-- Error state -->
+<div class="container" *ngIf="!isLoading && error">
+  <app-empty-state icon="⚠️" title="Error" [message]="error">
+    <button class="btn btn--primary" (click)="goBack()">Volver</button>
+  </app-empty-state>
+</div>

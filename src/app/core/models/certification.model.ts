@@ -7,6 +7,8 @@ export interface Certification {
   enabled: boolean;
   categoryFile: string;
   questionFile: string;
+  studyUrl?: string;
+  studyFile?: string;
 }
 
 export interface CertificationCategory {

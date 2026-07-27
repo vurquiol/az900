@@ -5,6 +5,7 @@ import { CertificationDetailComponent } from './pages/certification-detail/certi
 import { ExamComponent } from './pages/exam/exam.component';
 import { ExamResultsComponent } from './pages/exam-results/exam-results.component';
 import { AnswerReviewComponent } from './pages/answer-review/answer-review.component';
+import { StudyComponent } from './pages/study/study.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'certifications/:certificationId',
     component: CertificationDetailComponent
+  },
+  {
+    path: 'certifications/:certificationId/study',
+    component: StudyComponent
   },
   {
     path: 'certifications/:certificationId/exam',

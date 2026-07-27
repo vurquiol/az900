@@ -63,6 +63,11 @@ export class CertificationDetailComponent implements OnInit, OnDestroy {
     return this.questions.filter(q => q.categoryId === categoryId).length;
   }
 
+  goToStudy(): void {
+    if (!this.certification) { return; }
+    this.router.navigate(['/certifications', this.certification.id, 'study']);
+  }
+
   startFullExam(): void {
     if (!this.certification) { return; }
     this.router.navigate(['/certifications', this.certification.id, 'exam'], {

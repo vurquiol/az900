@@ -7,7 +7,9 @@
     "level": "Fundamentals",
     "enabled": true,
     "categoryFile": "assets/data/az-900/categories.json",
-    "questionFile": "assets/data/az-900/questions.json"
+    "questionFile": "assets/data/az-900/questions.json",
+    "studyUrl": "https://learn.microsoft.com/es-es/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification",
+    "studyFile": "assets/data/az-900/study.json"
   },
   {
     "id": "az-104",

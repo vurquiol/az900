@@ -65,6 +65,38 @@
       </div>
     </div>
 
+    <!-- Study material -->
+    <div class="cert-detail__section" *ngIf="certification.studyFile || certification.studyUrl">
+      <h3 class="cert-detail__section-title">Estudiar la materia</h3>
+      <div class="cert-detail__options">
+        <div
+          class="study-option"
+          *ngIf="certification.studyFile"
+          (click)="goToStudy()">
+          <div class="study-option__icon">📚</div>
+          <div class="study-option__content">
+            <h4>Guía de estudio interactiva</h4>
+            <p>Repasa la teoría y los temas clave de {{ certification.code }} organizados por categoría, dentro de la app.</p>
+          </div>
+          <button class="btn btn--primary btn--sm">Estudiar</button>
+        </div>
+
+        <a
+          class="study-option study-option--external"
+          *ngIf="certification.studyUrl"
+          [href]="certification.studyUrl"
+          target="_blank"
+          rel="noopener noreferrer">
+          <div class="study-option__icon">🌐</div>
+          <div class="study-option__content">
+            <h4>Guía oficial de Microsoft Learn</h4>
+            <p>Consulta la documentación y ruta de aprendizaje oficial de {{ certification.code }}.</p>
+          </div>
+          <span class="study-option__arrow">↗</span>
+        </a>
+      </div>
+    </div>
+
     <!-- Categories -->
     <div class="cert-detail__section">
       <h3 class="cert-detail__section-title">Practicar por categoría</h3>

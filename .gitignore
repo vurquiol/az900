@@ -63,3 +63,6 @@ logs
 # OS
 desktop.ini
 ehthumbs.db
+
+# graphify-axet
+.graphify/

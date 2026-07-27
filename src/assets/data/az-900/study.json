@@ -1,0 +1,200 @@
+[
+  {
+    "categoryId": "cloud-concepts",
+    "categoryName": "Conceptos de nube",
+    "icon": "☁",
+    "topics": [
+      {
+        "id": "modelos-servicio",
+        "title": "Modelos de servicio en la nube: IaaS, PaaS y SaaS",
+        "content": "Los modelos de servicio en la nube definen qué gestiona el proveedor y qué gestiona el cliente. En IaaS (Infrastructure as a Service) el proveedor ofrece la infraestructura virtualizada (servidores, redes, almacenamiento) y el cliente administra el sistema operativo, las aplicaciones y los datos; un ejemplo es Azure Virtual Machines. En PaaS (Platform as a Service) el proveedor gestiona también el sistema operativo y el entorno de ejecución, dejando al cliente solo la responsabilidad de sus aplicaciones y datos; ejemplo: Azure App Service. En SaaS (Software as a Service) el proveedor gestiona todo, y el cliente solo consume el software listo para usar, como Microsoft 365.",
+        "keyPoints": [
+          "IaaS: mayor control, el cliente gestiona SO, apps y datos (ej. Azure VMs)",
+          "PaaS: el proveedor gestiona infraestructura y SO (ej. Azure App Service)",
+          "SaaS: software totalmente gestionado, listo para usar (ej. Microsoft 365)",
+          "A mayor abstracción (SaaS), menor responsabilidad y control del cliente"
+        ]
+      },
+      {
+        "id": "modelos-nube",
+        "title": "Tipos de nube: pública, privada e híbrida",
+        "content": "La nube pública es propiedad de un proveedor externo (como Microsoft) y los recursos se comparten entre múltiples clientes (multi-tenant), ofreciendo escalabilidad y menor costo inicial. La nube privada está dedicada exclusivamente a una organización, ya sea en sus propias instalaciones o alojada por un tercero, brindando mayor control y cumplimiento normativo. La nube híbrida combina ambos modelos, permitiendo mantener datos sensibles on-premises mientras se aprovechan los beneficios de la nube pública para otras cargas de trabajo.",
+        "keyPoints": [
+          "Pública: multi-tenant, menor CapEx, alta escalabilidad",
+          "Privada: dedicada a una organización, mayor control y cumplimiento",
+          "Híbrida: combina ambas, útil para requisitos normativos o de latencia",
+          "La elección depende de seguridad, cumplimiento, costo y latencia requeridos"
+        ]
+      },
+      {
+        "id": "beneficios-nube",
+        "title": "Beneficios clave de la computación en la nube",
+        "content": "La nube ofrece ventajas frente a los centros de datos tradicionales: el modelo de gasto pasa de CapEx (inversión de capital en hardware) a OpEx (gasto operativo, pago por uso), eliminando la necesidad de comprar infraestructura por adelantado. La elasticidad permite escalar recursos automáticamente según la demanda, mientras que la escalabilidad (vertical u horizontal) permite ajustar la capacidad de forma manual o automática. La alta disponibilidad minimiza el tiempo de inactividad, y la agilidad permite implementar recursos globalmente en minutos.",
+        "keyPoints": [
+          "CapEx vs OpEx: la nube convierte gasto de capital en gasto operativo",
+          "Elasticidad: escalado automático según demanda en tiempo real",
+          "Escalabilidad vertical (scale up): más recursos a una instancia existente",
+          "Escalabilidad horizontal (scale out): más instancias del mismo recurso",
+          "Alta disponibilidad y agilidad: despliegue rápido y con mínima interrupción"
+        ]
+      },
+      {
+        "id": "responsabilidad-compartida",
+        "title": "Modelo de responsabilidad compartida",
+        "content": "En cualquier modelo de servicio en la nube, la responsabilidad de la seguridad se divide entre el proveedor y el cliente. El proveedor (Microsoft) siempre es responsable de la seguridad física de los centros de datos y, según el modelo, de la infraestructura, el sistema operativo y la plataforma. Sin embargo, el cliente siempre mantiene la responsabilidad sobre sus datos, los dispositivos finales, las cuentas y la gestión de identidades y accesos, independientemente de si usa IaaS, PaaS o SaaS.",
+        "keyPoints": [
+          "El cliente siempre es responsable de sus datos y de la gestión de identidades",
+          "El proveedor siempre es responsable de la seguridad física del datacenter",
+          "La responsabilidad del cliente disminuye a medida que se avanza de IaaS a SaaS",
+          "Este modelo es clave para entender la seguridad compartida en la nube"
+        ]
+      }
+    ]
+  },
+  {
+    "categoryId": "azure-architecture",
+    "categoryName": "Arquitectura y servicios de Azure",
+    "icon": "🏗",
+    "topics": [
+      {
+        "id": "regiones-zonas",
+        "title": "Regiones, pares de regiones y zonas de disponibilidad",
+        "content": "Una región de Azure es un conjunto de centros de datos con conectividad de baja latencia, ubicados en un área geográfica definida. Los pares de regiones conectan dos regiones dentro de la misma área geográfica para recuperación ante desastres. Las zonas de disponibilidad son ubicaciones físicamente separadas dentro de una región, cada una con energía, refrigeración y redes independientes, diseñadas para proteger las aplicaciones contra fallos en un centro de datos.",
+        "keyPoints": [
+          "Región: área geográfica con uno o más centros de datos",
+          "Zona de disponibilidad: ubicación física independiente dentro de una región (mínimo 3 por región habilitada)",
+          "Par de regiones: dos regiones en la misma geografía para recuperación ante desastres",
+          "Usar múltiples zonas mejora la resiliencia ante fallos de infraestructura"
+        ]
+      },
+      {
+        "id": "jerarquia-recursos",
+        "title": "Jerarquía de administración de recursos",
+        "content": "Azure organiza los recursos en una jerarquía de cuatro niveles. En el nivel superior están los Grupos de administración, que agrupan varias suscripciones y permiten aplicar políticas y permisos con herencia. Debajo están las Suscripciones, que agrupan recursos y están vinculadas a un plan de facturación. Dentro de cada suscripción hay Grupos de recursos, contenedores lógicos que agrupan recursos relacionados para facilitar su administración conjunta. Finalmente, los Recursos son las instancias individuales de los servicios de Azure (VMs, bases de datos, etc.).",
+        "keyPoints": [
+          "Grupos de administración → Suscripciones → Grupos de recursos → Recursos",
+          "Las políticas y permisos aplicados a un nivel se heredan a los niveles inferiores",
+          "Un grupo de recursos no puede anidarse dentro de otro grupo de recursos",
+          "Azure Resource Manager (ARM) es la capa que gestiona la creación, actualización y eliminación de recursos"
+        ]
+      },
+      {
+        "id": "servicios-computo",
+        "title": "Servicios de cómputo en Azure",
+        "content": "Azure ofrece diversos servicios de cómputo según el nivel de control y administración requerido. Azure Virtual Machines (IaaS) permite crear y administrar máquinas virtuales con control total sobre el sistema operativo. Azure App Service (PaaS) permite alojar aplicaciones web sin gestionar servidores. Azure Kubernetes Service (AKS) simplifica la administración de clústeres de contenedores Kubernetes. Azure Functions ofrece computación serverless, ejecutando código en respuesta a eventos y cobrando solo por el tiempo de ejecución, ideal para cargas de trabajo esporádicas o basadas en eventos.",
+        "keyPoints": [
+          "Azure Virtual Machines: IaaS, control total del SO",
+          "Azure App Service: PaaS para hospedar apps web sin gestionar servidores",
+          "Azure Kubernetes Service (AKS): orquestación administrada de contenedores",
+          "Azure Functions: computación serverless, pago por ejecución"
+        ]
+      },
+      {
+        "id": "servicios-red",
+        "title": "Servicios de redes en Azure",
+        "content": "Azure Virtual Network (VNet) permite crear redes privadas aisladas en la nube. Azure VNet Peering conecta dos redes virtuales para que se comuniquen entre sí con baja latencia, como si estuvieran en la misma red. Azure Load Balancer distribuye el tráfico entrante entre múltiples VMs para mejorar la disponibilidad, mientras que Azure Application Gateway actúa como balanceador de tráfico web en la capa de aplicación (capa 7) con funciones adicionales como firewall de aplicaciones web (WAF).",
+        "keyPoints": [
+          "VNet: red privada virtual aislada en Azure",
+          "VNet Peering: conecta redes virtuales entre sí con baja latencia",
+          "Load Balancer: distribuye tráfico entre VMs (capa 4)",
+          "Application Gateway: balanceo de tráfico web con WAF (capa 7)"
+        ]
+      },
+      {
+        "id": "servicios-almacenamiento",
+        "title": "Servicios de almacenamiento en Azure",
+        "content": "Azure Blob Storage almacena grandes cantidades de datos no estructurados, con tres tipos: Block Blobs (texto y binarios), Append Blobs (registros/logs) y Page Blobs (discos VHD). Azure Files ofrece recursos compartidos de archivos accesibles mediante el protocolo SMB. Azure Disk Storage proporciona discos administrados para máquinas virtuales. Los niveles de acceso (Hot, Cool, Archive) permiten optimizar costos según la frecuencia de acceso a los datos.",
+        "keyPoints": [
+          "Blob Storage: datos no estructurados (Block, Append, Page Blobs)",
+          "Azure Files: recursos compartidos de archivos vía SMB",
+          "Niveles de acceso: Hot (frecuente), Cool (infrecuente), Archive (rara vez, más económico)",
+          "La redundancia (LRS, ZRS, GRS) determina cómo se replican los datos"
+        ]
+      },
+      {
+        "id": "servicios-bases-datos",
+        "title": "Servicios de bases de datos en Azure",
+        "content": "Azure SQL Database es un servicio PaaS totalmente administrado para bases de datos relacionales SQL Server. Azure Cosmos DB es una base de datos NoSQL con distribución global, latencia inferior a 10 ms y compatibilidad con múltiples APIs (SQL, MongoDB, Cassandra, Gremlin). Azure Database for MySQL y Azure Database for PostgreSQL ofrecen versiones administradas de estos motores open-source populares.",
+        "keyPoints": [
+          "Azure SQL Database: PaaS relacional totalmente administrado",
+          "Azure Cosmos DB: base de datos NoSQL con latencia menor a 10 ms y varias APIs",
+          "Ambos son PaaS: Microsoft gestiona parches, backups e infraestructura",
+          "Azure Database for MySQL/PostgreSQL: versiones administradas de motores open-source"
+        ]
+      },
+      {
+        "id": "identidad",
+        "title": "Identidad en Azure: Microsoft Entra ID",
+        "content": "Microsoft Entra ID (anteriormente Azure Active Directory) es el servicio de identidad y acceso en la nube de Microsoft. Permite autenticar usuarios, gestionar grupos y aplicaciones, y controlar el acceso a recursos. Ofrece Single Sign-On (SSO) para acceder a múltiples aplicaciones con una sola autenticación, y Multi-Factor Authentication (MFA) para reforzar la seguridad requiriendo dos o más formas de verificación.",
+        "keyPoints": [
+          "Microsoft Entra ID: servicio de identidad y acceso en la nube",
+          "SSO: un solo inicio de sesión para múltiples aplicaciones",
+          "MFA: requiere dos o más factores de verificación",
+          "Es la base para controlar el acceso a los recursos de Azure"
+        ]
+      }
+    ]
+  },
+  {
+    "categoryId": "azure-governance",
+    "categoryName": "Administración y gobernanza de Azure",
+    "icon": "🛡",
+    "topics": [
+      {
+        "id": "rbac",
+        "title": "Control de acceso basado en roles (RBAC)",
+        "content": "RBAC (Role-Based Access Control) permite gestionar quién tiene acceso a los recursos de Azure y qué acciones puede realizar. Se asignan roles (como Propietario, Colaborador o Lector) a usuarios, grupos o identidades de servicio sobre un ámbito específico (suscripción, grupo de recursos o recurso individual). El rol Propietario otorga control total incluyendo la capacidad de delegar acceso; el Colaborador puede administrar recursos pero no delegar acceso; el Lector solo puede visualizar.",
+        "keyPoints": [
+          "RBAC controla quién puede hacer qué sobre qué recursos",
+          "Propietario: control total, puede delegar acceso",
+          "Colaborador: administra recursos, no puede delegar acceso",
+          "Lector: solo puede visualizar recursos, sin modificarlos"
+        ]
+      },
+      {
+        "id": "azure-policy",
+        "title": "Azure Policy y Blueprints",
+        "content": "Azure Policy permite crear, asignar y administrar directivas que imponen reglas sobre los recursos de Azure, garantizando el cumplimiento de estándares corporativos y normativos. Por ejemplo, se puede restringir las regiones donde se pueden crear recursos o exigir el uso de ciertas etiquetas. A diferencia de RBAC (que controla el acceso de los usuarios), Azure Policy controla las propiedades y configuraciones de los recursos, independientemente de quién los cree.",
+        "keyPoints": [
+          "Azure Policy evalúa y aplica reglas sobre configuraciones de recursos",
+          "RBAC controla el acceso de usuarios; Policy controla las propiedades de los recursos",
+          "Puede usarse para exigir etiquetas, restringir regiones o tipos de recursos",
+          "Los recursos no conformes pueden marcarse, bloquearse o remediarse automáticamente"
+        ]
+      },
+      {
+        "id": "costos",
+        "title": "Gestión de costos en Azure",
+        "content": "Azure ofrece varias herramientas para estimar y controlar costos. La Calculadora de precios de Azure estima el costo mensual de servicios antes de implementarlos. La Calculadora TCO compara el costo de infraestructura on-premises con Azure. Azure Cost Management permite definir presupuestos, configurar alertas de gasto y visualizar el consumo. Azure Reserved Instances ofrece descuentos significativos (hasta 72%) a cambio de comprometerse a usar recursos por 1 o 3 años.",
+        "keyPoints": [
+          "Calculadora de precios: estima costos antes de crear recursos",
+          "Calculadora TCO: compara costos on-premises vs Azure",
+          "Azure Cost Management: presupuestos, alertas y visualización de gastos",
+          "Reserved Instances: descuentos por compromiso de uso a 1 o 3 años"
+        ]
+      },
+      {
+        "id": "herramientas-soporte",
+        "title": "Herramientas de soporte y cumplimiento",
+        "content": "Azure Advisor analiza la configuración de los recursos y ofrece recomendaciones personalizadas en cinco categorías: costo, seguridad, fiabilidad, rendimiento y excelencia operativa. Azure Service Health informa sobre el estado de los servicios de Azure, incidentes activos y mantenimientos planificados. Microsoft Purview es una solución de gobernanza de datos que ayuda a clasificar, proteger y cumplir normativas en entornos locales, de nube y multicloud. Azure Key Vault almacena de forma segura secretos, claves de cifrado y certificados.",
+        "keyPoints": [
+          "Azure Advisor: recomendaciones de costo, seguridad, fiabilidad y rendimiento",
+          "Azure Service Health: estado de servicios e interrupciones planificadas",
+          "Microsoft Purview: gobernanza y cumplimiento de datos",
+          "Azure Key Vault: almacenamiento seguro de secretos, claves y certificados"
+        ]
+      },
+      {
+        "id": "sla-y-tags",
+        "title": "SLA, etiquetas y herramientas de administración",
+        "content": "Un SLA (Service Level Agreement) define los compromisos de disponibilidad y rendimiento que Microsoft garantiza para sus servicios; si no se cumple, el cliente puede recibir créditos de servicio. Las etiquetas (tags) son pares clave-valor asignados a recursos para organización, facturación y automatización. Las principales herramientas de administración de Azure son el Azure Portal (interfaz gráfica web), Azure CLI (línea de comandos multiplataforma), Azure PowerShell y las ARM Templates/Bicep para infraestructura como código.",
+        "keyPoints": [
+          "SLA: compromiso formal de disponibilidad; su incumplimiento genera créditos",
+          "Tags: pares clave-valor para organizar y facturar recursos",
+          "Azure Portal, CLI y PowerShell: herramientas principales de administración",
+          "ARM Templates/Bicep: infraestructura como código para despliegues repetibles"
+        ]
+      }
+    ]
+  }
+]

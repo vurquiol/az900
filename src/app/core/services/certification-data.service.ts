@@ -4,6 +4,7 @@ import { Observable, forkJoin, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Certification, CertificationCategory } from '../models/certification.model';
 import { Question } from '../models/question.model';
+import { StudySection } from '../models/study.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,27 @@ export class CertificationDataService {
   getQuestions(certification: Certification): Observable<Question[]> {
     return this.http.get<Question[]>(certification.questionFile).pipe(
       catchError(err => throwError('No se pudieron cargar las preguntas. ' + err.message))
+    );
+  }
+
+  getStudySections(certification: Certification): Observable<StudySection[]> {
+    if (!certification.studyFile) {
+      return throwError('Esta certificación no tiene material de estudio disponible.');
+    }
+    return this.http.get<StudySection[]>(certification.studyFile).pipe(
+      catchError(err => throwError('No se pudo cargar el material de estudio. ' + err.message))
+    );
+  }
+
+  getStudyData(certificationId: string): Observable<{
+    certification: Certification;
+    sections: StudySection[];
+  }> {
+    return this.getCertificationById(certificationId).pipe(
+      switchMap((cert: Certification) => this.getStudySections(cert).pipe(
+        map((sections: StudySection[]) => ({ certification: cert, sections }))
+      )),
+      catchError(err => throwError(err))
     );
   }
 

@@ -7,6 +7,7 @@ import { CertificationDetailComponent } from './pages/certification-detail/certi
 import { ExamComponent } from './pages/exam/exam.component';
 import { ExamResultsComponent } from './pages/exam-results/exam-results.component';
 import { AnswerReviewComponent } from './pages/answer-review/answer-review.component';
+import { StudyComponent } from './pages/study/study.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AnswerReviewComponent } from './pages/answer-review/answer-review.compo
     CertificationDetailComponent,
     ExamComponent,
     ExamResultsComponent,
-    AnswerReviewComponent
+    AnswerReviewComponent,
+    StudyComponent
   ],
   imports: [
     SharedModule,
