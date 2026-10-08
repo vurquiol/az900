@@ -4,10 +4,10 @@ import { Question } from '../../../core/models/question.model';
 import { CertificationCategory } from '../../../core/models/certification.model';
 
 @Component({
-  selector: 'app-exam-summary',
-  templateUrl: './exam-summary.component.html',
-  styleUrls: ['./exam-summary.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-exam-summary',
+    templateUrl: './exam-summary.component.html',
+    styleUrls: ['./exam-summary.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExamSummaryComponent {
   @Input() attempt: ExamAttempt;

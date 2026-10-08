@@ -14,9 +14,15 @@
 
   <div class="q-option__indicator">
     <span class="q-option__label">{{ label }}</span>
-    <span class="q-option__check" *ngIf="selected && !showResult">✓</span>
-    <span class="q-option__icon" *ngIf="showResult && isCorrect">✓</span>
-    <span class="q-option__icon q-option__icon--wrong" *ngIf="showResult && selected && !isCorrect">✗</span>
+    @if (selected && !showResult) {
+      <span class="q-option__check">✓</span>
+    }
+    @if (showResult && isCorrect) {
+      <span class="q-option__icon">✓</span>
+    }
+    @if (showResult && selected && !isCorrect) {
+      <span class="q-option__icon q-option__icon--wrong">✗</span>
+    }
   </div>
 
   <span class="q-option__text">{{ option.text }}</span>

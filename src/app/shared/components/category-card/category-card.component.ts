@@ -2,16 +2,16 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 import { CertificationCategory } from '../../../core/models/certification.model';
 
 @Component({
-  selector: 'app-category-card',
-  templateUrl: './category-card.component.html',
-  styleUrls: ['./category-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-category-card',
+    templateUrl: './category-card.component.html',
+    styleUrls: ['./category-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryCardComponent {
   @Input() category: CertificationCategory;
-  @Input() questionCount: number = 0;
-  @Input() selectable: boolean = false;
-  @Input() selected: boolean = false;
+  @Input() questionCount = 0;
+  @Input() selectable = false;
+  @Input() selected = false;
   @Output() selectedChange = new EventEmitter<boolean>();
 
   toggle(): void {

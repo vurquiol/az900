@@ -1,17 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Certification } from '../../../../core/models/certification.model';
 import { StudySection } from '../../../../core/models/study.model';
 import { CertificationDataService } from '../../../../core/services/certification-data.service';
+import { EmptyStateComponent } from '../../../../shared/components/empty-state/empty-state.component';
 
 @Component({
-  selector: 'app-study',
-  templateUrl: './study.component.html',
-  styleUrls: ['./study.component.scss']
+    selector: 'app-study',
+    templateUrl: './study.component.html',
+    styleUrls: ['./study.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [EmptyStateComponent]
 })
 export class StudyComponent implements OnInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private certDataService = inject(CertificationDataService);
+
 
   certification: Certification | null = null;
   sections: StudySection[] = [];
@@ -21,12 +28,6 @@ export class StudyComponent implements OnInit, OnDestroy {
   error: string | null = null;
 
   private destroy$ = new Subject<void>();
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private certDataService: CertificationDataService
-  ) {}
 
   ngOnInit(): void {
     const certId = this.route.snapshot.paramMap.get('certificationId');
@@ -46,7 +47,7 @@ export class StudyComponent implements OnInit, OnDestroy {
           this.activeCategoryId = sections.length > 0 ? sections[0].categoryId : null;
           this.isLoading = false;
         },
-        (err: any) => {
+        (err: unknown) => {
           this.error = typeof err === 'string' ? err : 'Error al cargar el material de estudio.';
           this.isLoading = false;
         }

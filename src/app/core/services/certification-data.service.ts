@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -10,10 +10,10 @@ import { StudySection } from '../models/study.model';
   providedIn: 'root'
 })
 export class CertificationDataService {
+  private http = inject(HttpClient);
+
 
   private readonly catalogPath = 'assets/data/certifications.json';
-
-  constructor(private http: HttpClient) {}
 
   getCertifications(): Observable<Certification[]> {
     return this.http.get<Certification[]>(this.catalogPath).pipe(

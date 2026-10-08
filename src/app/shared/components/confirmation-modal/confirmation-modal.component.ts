@@ -1,17 +1,17 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-confirmation-modal',
-  templateUrl: './confirmation-modal.component.html',
-  styleUrls: ['./confirmation-modal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-confirmation-modal',
+    templateUrl: './confirmation-modal.component.html',
+    styleUrls: ['./confirmation-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConfirmationModalComponent {
-  @Input() title: string = '¿Estás seguro?';
-  @Input() message: string = '';
-  @Input() confirmLabel: string = 'Confirmar';
-  @Input() cancelLabel: string = 'Cancelar';
-  @Input() visible: boolean = false;
+  @Input() title = '¿Estás seguro?';
+  @Input() message = '';
+  @Input() confirmLabel = 'Confirmar';
+  @Input() cancelLabel = 'Cancelar';
+  @Input() visible = false;
   @Output() confirmed = new EventEmitter<void>();
   @Output() cancelled = new EventEmitter<void>();
 
@@ -21,5 +21,11 @@ export class ConfirmationModalComponent {
 
   onCancel(): void {
     this.cancelled.emit();
+  }
+
+  onOverlayClick(event: MouseEvent): void {
+    if (event.target === event.currentTarget) {
+      this.onCancel();
+    }
   }
 }

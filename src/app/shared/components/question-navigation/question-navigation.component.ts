@@ -2,15 +2,15 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 import { ExamAnswer } from '../../../core/models/exam.model';
 
 @Component({
-  selector: 'app-question-navigation',
-  templateUrl: './question-navigation.component.html',
-  styleUrls: ['./question-navigation.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-question-navigation',
+    templateUrl: './question-navigation.component.html',
+    styleUrls: ['./question-navigation.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuestionNavigationComponent {
   @Input() questionIds: string[] = [];
-  @Input() answers: { [questionId: string]: ExamAnswer } = {};
-  @Input() currentIndex: number = 0;
+  @Input() answers: Record<string, ExamAnswer> = {};
+  @Input() currentIndex = 0;
   @Output() navigate = new EventEmitter<number>();
 
   goTo(index: number): void {

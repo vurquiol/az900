@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ExamAttempt, ExamAnswer, ExamConfiguration } from '../models/exam.model';
 import { Question } from '../models/question.model';
@@ -28,14 +28,12 @@ const INITIAL_STATE: ExamState = {
   providedIn: 'root'
 })
 export class ExamStateService {
+  private storageService = inject(ExamStorageService);
+  private questionService = inject(QuestionService);
+
 
   private stateSubject = new BehaviorSubject<ExamState>(INITIAL_STATE);
   state$: Observable<ExamState> = this.stateSubject.asObservable();
-
-  constructor(
-    private storageService: ExamStorageService,
-    private questionService: QuestionService
-  ) {}
 
   get currentState(): ExamState {
     return this.stateSubject.getValue();

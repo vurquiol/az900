@@ -1,9 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Certification } from '../../../../core/models/certification.model';
 import { Question } from '../../../../core/models/question.model';
 import { CertificationDataService } from '../../../../core/services/certification-data.service';
+import { EmptyStateComponent } from '../../../../shared/components/empty-state/empty-state.component';
+import { CertificationCardComponent } from '../../../../shared/components/certification-card/certification-card.component';
 
 interface CertificationWithCount {
   certification: Certification;
@@ -11,19 +13,21 @@ interface CertificationWithCount {
 }
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [EmptyStateComponent, CertificationCardComponent]
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  private certDataService = inject(CertificationDataService);
+
 
   certifications: CertificationWithCount[] = [];
   isLoading = true;
   error: string | null = null;
 
   private destroy$ = new Subject<void>();
-
-  constructor(private certDataService: CertificationDataService) {}
 
   ngOnInit(): void {
     this.loadCertifications();

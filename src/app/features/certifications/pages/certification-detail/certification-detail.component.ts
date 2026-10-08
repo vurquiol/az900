@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -7,13 +7,23 @@ import { Question } from '../../../../core/models/question.model';
 import { ExamAttempt, StoredProgress } from '../../../../core/models/exam.model';
 import { CertificationDataService } from '../../../../core/services/certification-data.service';
 import { ExamStorageService } from '../../../../core/services/exam-storage.service';
+import { CategoryCardComponent } from '../../../../shared/components/category-card/category-card.component';
+import { EmptyStateComponent } from '../../../../shared/components/empty-state/empty-state.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-certification-detail',
-  templateUrl: './certification-detail.component.html',
-  styleUrls: ['./certification-detail.component.scss']
+    selector: 'app-certification-detail',
+    templateUrl: './certification-detail.component.html',
+    styleUrls: ['./certification-detail.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [CategoryCardComponent, EmptyStateComponent, DatePipe]
 })
 export class CertificationDetailComponent implements OnInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private certDataService = inject(CertificationDataService);
+  private storageService = inject(ExamStorageService);
+
 
   certification: Certification | null = null;
   categories: CertificationCategory[] = [];
@@ -24,13 +34,6 @@ export class CertificationDetailComponent implements OnInit, OnDestroy {
   error: string | null = null;
 
   private destroy$ = new Subject<void>();
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private certDataService: CertificationDataService,
-    private storageService: ExamStorageService
-  ) {}
 
   ngOnInit(): void {
     const certId = this.route.snapshot.paramMap.get('certificationId');
@@ -52,7 +55,7 @@ export class CertificationDetailComponent implements OnInit, OnDestroy {
           this.progress = this.storageService.getProgress(certId);
           this.isLoading = false;
         },
-        (err: any) => {
+        (err: unknown) => {
           this.error = typeof err === 'string' ? err : 'Error al cargar los datos.';
           this.isLoading = false;
         }
