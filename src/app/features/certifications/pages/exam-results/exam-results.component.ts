@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { Certification, CertificationCategory } from '../../../../core/models/ce
     selector: 'app-exam-results',
     templateUrl: './exam-results.component.html',
     styleUrls: ['./exam-results.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ExamResultsComponent implements OnInit, OnDestroy {
