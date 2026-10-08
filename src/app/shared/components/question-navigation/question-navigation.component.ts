@@ -9,8 +9,8 @@ import { ExamAnswer } from '../../../core/models/exam.model';
 })
 export class QuestionNavigationComponent {
   @Input() questionIds: string[] = [];
-  @Input() answers: { [questionId: string]: ExamAnswer } = {};
-  @Input() currentIndex: number = 0;
+  @Input() answers: Record<string, ExamAnswer> = {};
+  @Input() currentIndex = 0;
   @Output() navigate = new EventEmitter<number>();
 
   goTo(index: number): void {

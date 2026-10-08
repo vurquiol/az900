@@ -11,5 +11,5 @@ import { RouterLink } from '@angular/router';
 })
 export class CertificationCardComponent {
   @Input() certification: Certification;
-  @Input() questionCount: number = 0;
+  @Input() questionCount = 0;
 }

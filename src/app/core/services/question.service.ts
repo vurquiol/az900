@@ -59,10 +59,10 @@ export class QuestionService {
 
   calculateResult(
     questions: Question[],
-    answers: { [questionId: string]: ExamAnswer },
+    answers: Record<string, ExamAnswer>,
     categories: CertificationCategory[]
   ): ExamResult {
-    const categoryMap: { [catId: string]: CategoryResult } = {};
+    const categoryMap: Record<string, CategoryResult> = {};
 
     categories.forEach(cat => {
       categoryMap[cat.id] = {

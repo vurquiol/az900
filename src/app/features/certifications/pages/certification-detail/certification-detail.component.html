@@ -53,7 +53,7 @@
       <div class="cert-detail__section">
         <h3 class="cert-detail__section-title">Opciones de práctica</h3>
         <div class="cert-detail__options">
-          <div class="practice-option" (click)="startFullExam()">
+          <div class="practice-option" tabindex="0" (click)="startFullExam()" (keydown.enter)="startFullExam()">
             <div class="practice-option__icon">📝</div>
             <div class="practice-option__content">
               <h4>Examen completo</h4>
@@ -71,7 +71,9 @@
             @if (certification.studyFile) {
               <div
                 class="study-option"
-                (click)="goToStudy()">
+                tabindex="0"
+                (click)="goToStudy()"
+                (keydown.enter)="goToStudy()">
                 <div class="study-option__icon">📚</div>
                 <div class="study-option__content">
                   <h4>Guía de estudio interactiva</h4>
@@ -104,7 +106,9 @@
           @for (cat of categories; track trackByCategory($index, cat)) {
             <div
               class="cat-option"
-              (click)="startCategoryExam(cat.id)">
+              tabindex="0"
+              (click)="startCategoryExam(cat.id)"
+              (keydown.enter)="startCategoryExam(cat.id)">
               <app-category-card
                 [category]="cat"
                 [questionCount]="getQuestionCount(cat.id)">

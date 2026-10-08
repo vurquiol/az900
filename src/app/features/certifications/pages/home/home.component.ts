@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Certification } from '../../../../core/models/certification.model';
@@ -20,14 +20,14 @@ interface CertificationWithCount {
     imports: [EmptyStateComponent, CertificationCardComponent]
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  private certDataService = inject(CertificationDataService);
+
 
   certifications: CertificationWithCount[] = [];
   isLoading = true;
   error: string | null = null;
 
   private destroy$ = new Subject<void>();
-
-  constructor(private certDataService: CertificationDataService) {}
 
   ngOnInit(): void {
     this.loadCertifications();

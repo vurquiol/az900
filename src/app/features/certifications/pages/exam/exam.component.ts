@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Certification, CertificationCategory } from '../../../../core/models/certification.model';
 import { Question } from '../../../../core/models/question.model';
-import { ExamAttempt, ExamConfiguration, ExamMode } from '../../../../core/models/exam.model';
+import { ExamConfiguration, ExamMode } from '../../../../core/models/exam.model';
 import { CertificationDataService } from '../../../../core/services/certification-data.service';
 import { ExamStateService, ExamState } from '../../../../core/services/exam-state.service';
 import { ExamStorageService } from '../../../../core/services/exam-storage.service';
@@ -23,6 +23,12 @@ import { ConfirmationModalComponent } from '../../../../shared/components/confir
     imports: [EmptyStateComponent, ExamProgressComponent, QuestionOptionComponent, QuestionNavigationComponent, ExamSummaryComponent, ConfirmationModalComponent]
 })
 export class ExamComponent implements OnInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private certDataService = inject(CertificationDataService);
+  private examStateService = inject(ExamStateService);
+  private storageService = inject(ExamStorageService);
+
 
   state: ExamState | null = null;
   certification: Certification | null = null;
@@ -32,14 +38,6 @@ export class ExamComponent implements OnInit, OnDestroy {
   error: string | null = null;
 
   private destroy$ = new Subject<void>();
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private certDataService: CertificationDataService,
-    private examStateService: ExamStateService,
-    private storageService: ExamStorageService
-  ) {}
 
   ngOnInit(): void {
     this.examStateService.state$
@@ -93,7 +91,7 @@ export class ExamComponent implements OnInit, OnDestroy {
           this.examStateService.startExam(config, questions, categories);
           this.isLoading = false;
         },
-        (err: any) => {
+        (err: unknown) => {
           this.error = typeof err === 'string' ? err : 'Error al cargar el examen.';
           this.isLoading = false;
         }

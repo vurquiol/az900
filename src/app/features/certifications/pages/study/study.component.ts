@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -15,6 +15,10 @@ import { EmptyStateComponent } from '../../../../shared/components/empty-state/e
     imports: [EmptyStateComponent]
 })
 export class StudyComponent implements OnInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private certDataService = inject(CertificationDataService);
+
 
   certification: Certification | null = null;
   sections: StudySection[] = [];
@@ -24,12 +28,6 @@ export class StudyComponent implements OnInit, OnDestroy {
   error: string | null = null;
 
   private destroy$ = new Subject<void>();
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private certDataService: CertificationDataService
-  ) {}
 
   ngOnInit(): void {
     const certId = this.route.snapshot.paramMap.get('certificationId');
@@ -49,7 +47,7 @@ export class StudyComponent implements OnInit, OnDestroy {
           this.activeCategoryId = sections.length > 0 ? sections[0].categoryId : null;
           this.isLoading = false;
         },
-        (err: any) => {
+        (err: unknown) => {
           this.error = typeof err === 'string' ? err : 'Error al cargar el material de estudio.';
           this.isLoading = false;
         }

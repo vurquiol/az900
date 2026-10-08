@@ -39,7 +39,7 @@ export interface ExamAttempt {
   certificationId: string;
   configuration: ExamConfiguration;
   questionIds: string[];
-  answers: { [questionId: string]: ExamAnswer };
+  answers: Record<string, ExamAnswer>;
   startedAt: string;
   finishedAt: string | null;
   isCompleted: boolean;

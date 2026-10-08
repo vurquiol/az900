@@ -1,27 +1,36 @@
 # Az900CertPractice
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.4.
+Práctica de exámenes de certificación Azure (AZ-900 y relacionadas), construida con Angular.
 
-## Development server
+## Requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+| Herramienta | Versión |
+|-------------|---------|
+| Node.js     | 24 LTS (ver `.nvmrc`; Angular 22 soporta `^22.22.3 \|\| ^24.15.0 \|\| >=26.0.0`) |
+| npm         | 10+ |
+| Angular     | 22.x (CLI `@angular/cli` 22, builder `@angular/build`) |
 
-## Code scaffolding
+```bash
+nvm use        # usa la versión de .nvmrc
+npm ci
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Scripts
 
-## Build
+| Comando | Descripción |
+|---------|-------------|
+| `npm start` | Servidor de desarrollo en `http://localhost:4200/` |
+| `npm run start:lan` | Servidor de desarrollo accesible desde la red local |
+| `npm run build` | Build de producción en `dist/az900-cert-practice/browser/` |
+| `npm test` | Tests unitarios con Karma + Jasmine (modo watch) |
+| `npm run test:ci` | Tests unitarios una sola vez en Chrome headless |
+| `npm run lint` | ESLint (`angular-eslint`) |
+| `npm run deploy` | Build con `--base-href /az900/`, copia `index.html` a `404.html` y publica `dist/az900-cert-practice/browser` en GitHub Pages con `angular-cli-ghpages` |
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Notas de la actualización
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Build con el builder `application` (esbuild/Vite). La salida está en `dist/az900-cert-practice/browser/`.
+- Ya no se necesita `NODE_OPTIONS=--openssl-legacy-provider`.
+- TSLint/codelyzer reemplazados por ESLint (`eslint.config.js`).
+- Protractor eliminado (no había specs e2e propias, solo el boilerplate del CLI).
+- Componentes standalone con `bootstrapApplication` (`src/app/app.config.ts`, `src/app/app.routes.ts`).

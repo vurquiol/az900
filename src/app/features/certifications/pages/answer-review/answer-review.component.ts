@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -18,6 +18,11 @@ import { QuestionOptionComponent } from '../../../../shared/components/question-
     imports: [EmptyStateComponent, QuestionOptionComponent]
 })
 export class AnswerReviewComponent implements OnInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private certDataService = inject(CertificationDataService);
+  private storageService = inject(ExamStorageService);
+
 
   attempt: ExamAttempt | null = null;
   certification: Certification | null = null;
@@ -28,13 +33,6 @@ export class AnswerReviewComponent implements OnInit, OnDestroy {
   error: string | null = null;
 
   private destroy$ = new Subject<void>();
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private certDataService: CertificationDataService,
-    private storageService: ExamStorageService
-  ) {}
 
   ngOnInit(): void {
     const certId = this.route.snapshot.paramMap.get('certificationId');
@@ -58,7 +56,7 @@ export class AnswerReviewComponent implements OnInit, OnDestroy {
             }
             this.isLoading = false;
           },
-          (err: any) => {
+          (err: unknown) => {
             this.error = typeof err === 'string' ? err : 'Error al cargar.';
             this.isLoading = false;
           }

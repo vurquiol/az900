@@ -7,7 +7,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmptyStateComponent {
-  @Input() icon: string = '📭';
-  @Input() title: string = 'Sin datos';
-  @Input() message: string = '';
+  @Input() icon = '📭';
+  @Input() title = 'Sin datos';
+  @Input() message = '';
 }

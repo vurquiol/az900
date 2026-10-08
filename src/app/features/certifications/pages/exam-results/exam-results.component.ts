@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -18,6 +18,11 @@ import { EmptyStateComponent } from '../../../../shared/components/empty-state/e
     imports: [ResultScoreCardComponent, CategoryResultChartComponent, EmptyStateComponent]
 })
 export class ExamResultsComponent implements OnInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private certDataService = inject(CertificationDataService);
+  private storageService = inject(ExamStorageService);
+
 
   attempt: ExamAttempt | null = null;
   certification: Certification | null = null;
@@ -26,13 +31,6 @@ export class ExamResultsComponent implements OnInit, OnDestroy {
   error: string | null = null;
 
   private destroy$ = new Subject<void>();
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private certDataService: CertificationDataService,
-    private storageService: ExamStorageService
-  ) {}
 
   ngOnInit(): void {
     const certId = this.route.snapshot.paramMap.get('certificationId');
@@ -44,12 +42,12 @@ export class ExamResultsComponent implements OnInit, OnDestroy {
       this.certDataService.getCertificationData(certId)
         .pipe(takeUntil(this.destroy$))
         .subscribe(
-          ({ certification, categories }: { certification: Certification; categories: CertificationCategory[]; questions: any[] }) => {
+          ({ certification, categories }: { certification: Certification; categories: CertificationCategory[]; questions: unknown[] }) => {
             this.certification = certification;
             this.categories = categories;
             this.isLoading = false;
           },
-          (err: any) => {
+          (err: unknown) => {
             this.error = typeof err === 'string' ? err : 'Error al cargar.';
             this.isLoading = false;
           }

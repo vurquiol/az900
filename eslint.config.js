@@ -31,6 +31,8 @@ module.exports = defineConfig([
           style: "kebab-case",
         },
       ],
+      // Components keep ChangeDetectionStrategy.Eager to preserve pre-v22 behavior.
+      "@angular-eslint/prefer-on-push-component-change-detection": "off",
     },
   },
   {

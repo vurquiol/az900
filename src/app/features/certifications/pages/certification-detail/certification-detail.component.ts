@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -19,6 +19,11 @@ import { DatePipe } from '@angular/common';
     imports: [CategoryCardComponent, EmptyStateComponent, DatePipe]
 })
 export class CertificationDetailComponent implements OnInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private certDataService = inject(CertificationDataService);
+  private storageService = inject(ExamStorageService);
+
 
   certification: Certification | null = null;
   categories: CertificationCategory[] = [];
@@ -29,13 +34,6 @@ export class CertificationDetailComponent implements OnInit, OnDestroy {
   error: string | null = null;
 
   private destroy$ = new Subject<void>();
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private certDataService: CertificationDataService,
-    private storageService: ExamStorageService
-  ) {}
 
   ngOnInit(): void {
     const certId = this.route.snapshot.paramMap.get('certificationId');
@@ -57,7 +55,7 @@ export class CertificationDetailComponent implements OnInit, OnDestroy {
           this.progress = this.storageService.getProgress(certId);
           this.isLoading = false;
         },
-        (err: any) => {
+        (err: unknown) => {
           this.error = typeof err === 'string' ? err : 'Error al cargar los datos.';
           this.isLoading = false;
         }

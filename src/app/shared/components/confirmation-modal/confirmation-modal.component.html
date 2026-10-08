@@ -1,6 +1,6 @@
 @if (visible) {
-  <div class="modal-overlay" (click)="onCancel()">
-    <div class="modal" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
+  <div class="modal-overlay" tabindex="-1" (click)="onOverlayClick($event)" (keydown.escape)="onCancel()">
+    <div class="modal" role="dialog" aria-modal="true">
       <div class="modal__header">
         <h3 class="modal__title">{{ title }}</h3>
       </div>
