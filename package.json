@@ -10,8 +10,8 @@
     "lint": "ng lint",
     "e2e": "cross-env NODE_OPTIONS=--openssl-legacy-provider ng e2e",
     "build:gh-pages": "cross-env NODE_OPTIONS=--openssl-legacy-provider ng build --configuration production --base-href /az900/",
-    "postbuild:gh-pages": "node -e \"require('fs').copyFileSync('dist/az900-cert-practice/index.html', 'dist/az900-cert-practice/404.html')\"",
-    "deploy": "npm run build:gh-pages && npm run postbuild:gh-pages && npx angular-cli-ghpages --dir=dist/az900-cert-practice"
+    "postbuild:gh-pages": "node -e \"require('fs').copyFileSync('dist/az900-cert-practice/browser/index.html', 'dist/az900-cert-practice/browser/404.html')\"",
+    "deploy": "npm run build:gh-pages && npm run postbuild:gh-pages && npx angular-cli-ghpages --dir=dist/az900-cert-practice/browser"
   },
   "private": true,
   "dependencies": {
