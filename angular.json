@@ -71,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "az900-cert-practice:build"
+            "buildTarget": "az900-cert-practice:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "az900-cert-practice:build:production"
+              "buildTarget": "az900-cert-practice:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "az900-cert-practice:build"
+            "buildTarget": "az900-cert-practice:build"
           }
         },
         "test": {
