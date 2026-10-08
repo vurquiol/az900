@@ -2,10 +2,11 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 import { QuestionOption, QuestionType } from '../../../core/models/question.model';
 
 @Component({
-  selector: 'app-question-option',
-  templateUrl: './question-option.component.html',
-  styleUrls: ['./question-option.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-question-option',
+    templateUrl: './question-option.component.html',
+    styleUrls: ['./question-option.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class QuestionOptionComponent {
   @Input() option: QuestionOption;

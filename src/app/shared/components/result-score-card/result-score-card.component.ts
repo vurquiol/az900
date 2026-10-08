@@ -2,10 +2,11 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ExamResult } from '../../../core/models/exam.model';
 
 @Component({
-  selector: 'app-result-score-card',
-  templateUrl: './result-score-card.component.html',
-  styleUrls: ['./result-score-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-result-score-card',
+    templateUrl: './result-score-card.component.html',
+    styleUrls: ['./result-score-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ResultScoreCardComponent {
   @Input() result: ExamResult;

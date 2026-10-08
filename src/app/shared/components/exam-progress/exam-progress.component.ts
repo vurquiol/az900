@@ -1,10 +1,11 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-exam-progress',
-  templateUrl: './exam-progress.component.html',
-  styleUrls: ['./exam-progress.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-exam-progress',
+    templateUrl: './exam-progress.component.html',
+    styleUrls: ['./exam-progress.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ExamProgressComponent {
   @Input() current: number = 1;

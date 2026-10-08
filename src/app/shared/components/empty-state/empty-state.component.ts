@@ -1,10 +1,11 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-empty-state',
-  templateUrl: './empty-state.component.html',
-  styleUrls: ['./empty-state.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-empty-state',
+    templateUrl: './empty-state.component.html',
+    styleUrls: ['./empty-state.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EmptyStateComponent {
   @Input() icon: string = '📭';

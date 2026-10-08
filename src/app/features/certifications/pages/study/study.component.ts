@@ -7,9 +7,10 @@ import { StudySection } from '../../../../core/models/study.model';
 import { CertificationDataService } from '../../../../core/services/certification-data.service';
 
 @Component({
-  selector: 'app-study',
-  templateUrl: './study.component.html',
-  styleUrls: ['./study.component.scss']
+    selector: 'app-study',
+    templateUrl: './study.component.html',
+    styleUrls: ['./study.component.scss'],
+    standalone: false
 })
 export class StudyComponent implements OnInit, OnDestroy {
 

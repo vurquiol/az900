@@ -2,10 +2,11 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 import { ExamAnswer } from '../../../core/models/exam.model';
 
 @Component({
-  selector: 'app-question-navigation',
-  templateUrl: './question-navigation.component.html',
-  styleUrls: ['./question-navigation.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-question-navigation',
+    templateUrl: './question-navigation.component.html',
+    styleUrls: ['./question-navigation.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class QuestionNavigationComponent {
   @Input() questionIds: string[] = [];

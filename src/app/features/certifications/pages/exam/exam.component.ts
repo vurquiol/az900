@@ -10,9 +10,10 @@ import { ExamStateService, ExamState } from '../../../../core/services/exam-stat
 import { ExamStorageService } from '../../../../core/services/exam-storage.service';
 
 @Component({
-  selector: 'app-exam',
-  templateUrl: './exam.component.html',
-  styleUrls: ['./exam.component.scss']
+    selector: 'app-exam',
+    templateUrl: './exam.component.html',
+    styleUrls: ['./exam.component.scss'],
+    standalone: false
 })
 export class ExamComponent implements OnInit, OnDestroy {
 

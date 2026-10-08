@@ -9,9 +9,10 @@ import { CertificationDataService } from '../../../../core/services/certificatio
 import { ExamStorageService } from '../../../../core/services/exam-storage.service';
 
 @Component({
-  selector: 'app-answer-review',
-  templateUrl: './answer-review.component.html',
-  styleUrls: ['./answer-review.component.scss']
+    selector: 'app-answer-review',
+    templateUrl: './answer-review.component.html',
+    styleUrls: ['./answer-review.component.scss'],
+    standalone: false
 })
 export class AnswerReviewComponent implements OnInit, OnDestroy {
 

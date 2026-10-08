@@ -8,9 +8,10 @@ import { ExamStorageService } from '../../../../core/services/exam-storage.servi
 import { Certification, CertificationCategory } from '../../../../core/models/certification.model';
 
 @Component({
-  selector: 'app-exam-results',
-  templateUrl: './exam-results.component.html',
-  styleUrls: ['./exam-results.component.scss']
+    selector: 'app-exam-results',
+    templateUrl: './exam-results.component.html',
+    styleUrls: ['./exam-results.component.scss'],
+    standalone: false
 })
 export class ExamResultsComponent implements OnInit, OnDestroy {
 

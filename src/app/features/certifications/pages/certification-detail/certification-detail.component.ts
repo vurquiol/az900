@@ -9,9 +9,10 @@ import { CertificationDataService } from '../../../../core/services/certificatio
 import { ExamStorageService } from '../../../../core/services/exam-storage.service';
 
 @Component({
-  selector: 'app-certification-detail',
-  templateUrl: './certification-detail.component.html',
-  styleUrls: ['./certification-detail.component.scss']
+    selector: 'app-certification-detail',
+    templateUrl: './certification-detail.component.html',
+    styleUrls: ['./certification-detail.component.scss'],
+    standalone: false
 })
 export class CertificationDetailComponent implements OnInit, OnDestroy {
 

@@ -2,10 +2,11 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 import { CertificationCategory } from '../../../core/models/certification.model';
 
 @Component({
-  selector: 'app-category-card',
-  templateUrl: './category-card.component.html',
-  styleUrls: ['./category-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-category-card',
+    templateUrl: './category-card.component.html',
+    styleUrls: ['./category-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CategoryCardComponent {
   @Input() category: CertificationCategory;

@@ -2,10 +2,11 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CategoryResult } from '../../../core/models/exam.model';
 
 @Component({
-  selector: 'app-category-result-chart',
-  templateUrl: './category-result-chart.component.html',
-  styleUrls: ['./category-result-chart.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-category-result-chart',
+    templateUrl: './category-result-chart.component.html',
+    styleUrls: ['./category-result-chart.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CategoryResultChartComponent {
   @Input() categoryResults: CategoryResult[] = [];
