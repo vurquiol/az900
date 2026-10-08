@@ -4,8 +4,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
     selector: 'app-exam-progress',
     templateUrl: './exam-progress.component.html',
     styleUrls: ['./exam-progress.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExamProgressComponent {
   @Input() current: number = 1;

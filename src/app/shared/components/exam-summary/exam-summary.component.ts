@@ -7,8 +7,7 @@ import { CertificationCategory } from '../../../core/models/certification.model'
     selector: 'app-exam-summary',
     templateUrl: './exam-summary.component.html',
     styleUrls: ['./exam-summary.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExamSummaryComponent {
   @Input() attempt: ExamAttempt;

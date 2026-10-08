@@ -5,8 +5,7 @@ import { ExamAnswer } from '../../../core/models/exam.model';
     selector: 'app-question-navigation',
     templateUrl: './question-navigation.component.html',
     styleUrls: ['./question-navigation.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuestionNavigationComponent {
   @Input() questionIds: string[] = [];

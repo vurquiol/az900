@@ -6,13 +6,16 @@ import { ExamAttempt } from '../../../../core/models/exam.model';
 import { CertificationDataService } from '../../../../core/services/certification-data.service';
 import { ExamStorageService } from '../../../../core/services/exam-storage.service';
 import { Certification, CertificationCategory } from '../../../../core/models/certification.model';
+import { ResultScoreCardComponent } from '../../../../shared/components/result-score-card/result-score-card.component';
+import { CategoryResultChartComponent } from '../../../../shared/components/category-result-chart/category-result-chart.component';
+import { EmptyStateComponent } from '../../../../shared/components/empty-state/empty-state.component';
 
 @Component({
     selector: 'app-exam-results',
     templateUrl: './exam-results.component.html',
     styleUrls: ['./exam-results.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [ResultScoreCardComponent, CategoryResultChartComponent, EmptyStateComponent]
 })
 export class ExamResultsComponent implements OnInit, OnDestroy {
 

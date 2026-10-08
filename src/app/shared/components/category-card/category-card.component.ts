@@ -5,8 +5,7 @@ import { CertificationCategory } from '../../../core/models/certification.model'
     selector: 'app-category-card',
     templateUrl: './category-card.component.html',
     styleUrls: ['./category-card.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryCardComponent {
   @Input() category: CertificationCategory;

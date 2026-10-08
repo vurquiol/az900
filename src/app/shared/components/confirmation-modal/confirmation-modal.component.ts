@@ -4,8 +4,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
     selector: 'app-confirmation-modal',
     templateUrl: './confirmation-modal.component.html',
     styleUrls: ['./confirmation-modal.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConfirmationModalComponent {
   @Input() title: string = '¿Estás seguro?';

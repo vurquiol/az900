@@ -5,8 +5,7 @@ import { CategoryResult } from '../../../core/models/exam.model';
     selector: 'app-category-result-chart',
     templateUrl: './category-result-chart.component.html',
     styleUrls: ['./category-result-chart.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryResultChartComponent {
   @Input() categoryResults: CategoryResult[] = [];

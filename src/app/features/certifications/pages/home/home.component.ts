@@ -4,6 +4,8 @@ import { takeUntil } from 'rxjs/operators';
 import { Certification } from '../../../../core/models/certification.model';
 import { Question } from '../../../../core/models/question.model';
 import { CertificationDataService } from '../../../../core/services/certification-data.service';
+import { EmptyStateComponent } from '../../../../shared/components/empty-state/empty-state.component';
+import { CertificationCardComponent } from '../../../../shared/components/certification-card/certification-card.component';
 
 interface CertificationWithCount {
   certification: Certification;
@@ -15,7 +17,7 @@ interface CertificationWithCount {
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [EmptyStateComponent, CertificationCardComponent]
 })
 export class HomeComponent implements OnInit, OnDestroy {
 

@@ -8,13 +8,19 @@ import { ExamAttempt, ExamConfiguration, ExamMode } from '../../../../core/model
 import { CertificationDataService } from '../../../../core/services/certification-data.service';
 import { ExamStateService, ExamState } from '../../../../core/services/exam-state.service';
 import { ExamStorageService } from '../../../../core/services/exam-storage.service';
+import { EmptyStateComponent } from '../../../../shared/components/empty-state/empty-state.component';
+import { ExamProgressComponent } from '../../../../shared/components/exam-progress/exam-progress.component';
+import { QuestionOptionComponent } from '../../../../shared/components/question-option/question-option.component';
+import { QuestionNavigationComponent } from '../../../../shared/components/question-navigation/question-navigation.component';
+import { ExamSummaryComponent } from '../../../../shared/components/exam-summary/exam-summary.component';
+import { ConfirmationModalComponent } from '../../../../shared/components/confirmation-modal/confirmation-modal.component';
 
 @Component({
     selector: 'app-exam',
     templateUrl: './exam.component.html',
     styleUrls: ['./exam.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [EmptyStateComponent, ExamProgressComponent, QuestionOptionComponent, QuestionNavigationComponent, ExamSummaryComponent, ConfirmationModalComponent]
 })
 export class ExamComponent implements OnInit, OnDestroy {
 

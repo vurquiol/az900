@@ -7,13 +7,15 @@ import { Question } from '../../../../core/models/question.model';
 import { ExamAttempt } from '../../../../core/models/exam.model';
 import { CertificationDataService } from '../../../../core/services/certification-data.service';
 import { ExamStorageService } from '../../../../core/services/exam-storage.service';
+import { EmptyStateComponent } from '../../../../shared/components/empty-state/empty-state.component';
+import { QuestionOptionComponent } from '../../../../shared/components/question-option/question-option.component';
 
 @Component({
     selector: 'app-answer-review',
     templateUrl: './answer-review.component.html',
     styleUrls: ['./answer-review.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [EmptyStateComponent, QuestionOptionComponent]
 })
 export class AnswerReviewComponent implements OnInit, OnDestroy {
 

@@ -5,13 +5,14 @@ import { takeUntil } from 'rxjs/operators';
 import { Certification } from '../../../../core/models/certification.model';
 import { StudySection } from '../../../../core/models/study.model';
 import { CertificationDataService } from '../../../../core/services/certification-data.service';
+import { EmptyStateComponent } from '../../../../shared/components/empty-state/empty-state.component';
 
 @Component({
     selector: 'app-study',
     templateUrl: './study.component.html',
     styleUrls: ['./study.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [EmptyStateComponent]
 })
 export class StudyComponent implements OnInit, OnDestroy {
 

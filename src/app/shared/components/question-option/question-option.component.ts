@@ -5,8 +5,7 @@ import { QuestionOption, QuestionType } from '../../../core/models/question.mode
     selector: 'app-question-option',
     templateUrl: './question-option.component.html',
     styleUrls: ['./question-option.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuestionOptionComponent {
   @Input() option: QuestionOption;

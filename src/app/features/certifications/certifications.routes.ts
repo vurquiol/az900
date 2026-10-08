@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { CertificationDetailComponent } from './pages/certification-detail/certification-detail.component';
 import { ExamComponent } from './pages/exam/exam.component';
@@ -7,7 +6,7 @@ import { ExamResultsComponent } from './pages/exam-results/exam-results.componen
 import { AnswerReviewComponent } from './pages/answer-review/answer-review.component';
 import { StudyComponent } from './pages/study/study.component';
 
-const routes: Routes = [
+export const CERTIFICATIONS_ROUTES: Routes = [
   {
     path: '',
     component: HomeComponent
@@ -33,9 +32,3 @@ const routes: Routes = [
     component: AnswerReviewComponent
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class CertificationsRoutingModule {}

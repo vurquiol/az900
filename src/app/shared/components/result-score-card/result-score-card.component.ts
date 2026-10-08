@@ -1,12 +1,13 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ExamResult } from '../../../core/models/exam.model';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-result-score-card',
     templateUrl: './result-score-card.component.html',
     styleUrls: ['./result-score-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [NgClass]
 })
 export class ResultScoreCardComponent {
   @Input() result: ExamResult;
